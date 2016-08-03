@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cache>
+    <redis>
+        <hostname>127.0.0.1</hostname>
+        <port>6379</port>
+        <timeout>0</timeout>
+        <pconnect>true</pconnect>
+    </redis>
+    <memcache>
+        <hostname>127.0.0.1</hostname>
+        <port>11288</port>
+        <persistent>true</persistent>
+        <weight>1</weight>
+        <timeout>20</timeout>
+    </memcache>
+</cache>
