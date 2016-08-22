@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atongmu.dao.RiskControlRuleMapper">
+  <resultMap id="BaseResultMap" type="com.atongmu.model.RiskControlRule">
+    <id column="rule_id" jdbcType="INTEGER" property="ruleId" />
+    <result column="risk_type" jdbcType="SMALLINT" property="riskType" />
+    <result column="policy_type" jdbcType="SMALLINT" property="policyType" />
+    <result column="priority" jdbcType="SMALLINT" property="priority" />
+    <result column="app_id" jdbcType="INTEGER" property="appId" />
+    <result column="area_id" jdbcType="INTEGER" property="areaId" />
+    <result column="start_ip" jdbcType="VARCHAR" property="startIp" />
+    <result column="end_ip" jdbcType="VARCHAR" property="endIp" />
+    <result column="request_period" jdbcType="INTEGER" property="requestPeriod" />
+    <result column="request_limit" jdbcType="INTEGER" property="requestLimit" />
+    <result column="forbid_period" jdbcType="INTEGER" property="forbidPeriod" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="add_user_id" jdbcType="BIGINT" property="addUserId" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="update_user_id" jdbcType="BIGINT" property="updateUserId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="effect_time" jdbcType="TIMESTAMP" property="effectTime" />
+    <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rule_id, risk_type, policy_type, priority, app_id, area_id, start_ip, end_ip, request_period, 
+    request_limit, forbid_period, status, comment, add_user_id, add_time, update_user_id, 
+    update_time, effect_time, expire_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_risk_rule
+    where rule_id = #{ruleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_risk_rule
+    where rule_id = #{ruleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.atongmu.model.RiskControlRule">
+    insert into tb_risk_rule (rule_id, risk_type, policy_type, 
+      priority, app_id, area_id, 
+      start_ip, end_ip, request_period, 
+      request_limit, forbid_period, status, 
+      comment, add_user_id, add_time, 
+      update_user_id, update_time, effect_time, 
+      expire_time)
+    values (#{ruleId,jdbcType=INTEGER}, #{riskType,jdbcType=SMALLINT}, #{policyType,jdbcType=SMALLINT}, 
+      #{priority,jdbcType=SMALLINT}, #{appId,jdbcType=INTEGER}, #{areaId,jdbcType=INTEGER}, 
+      #{startIp,jdbcType=VARCHAR}, #{endIp,jdbcType=VARCHAR}, #{requestPeriod,jdbcType=INTEGER}, 
+      #{requestLimit,jdbcType=INTEGER}, #{forbidPeriod,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
+      #{comment,jdbcType=VARCHAR}, #{addUserId,jdbcType=BIGINT}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{updateUserId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, #{effectTime,jdbcType=TIMESTAMP}, 
+      #{expireTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.atongmu.model.RiskControlRule">
+    insert into tb_risk_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ruleId != null">
+        rule_id,
+      </if>
+      <if test="riskType != null">
+        risk_type,
+      </if>
+      <if test="policyType != null">
+        policy_type,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="startIp != null">
+        start_ip,
+      </if>
+      <if test="endIp != null">
+        end_ip,
+      </if>
+      <if test="requestPeriod != null">
+        request_period,
+      </if>
+      <if test="requestLimit != null">
+        request_limit,
+      </if>
+      <if test="forbidPeriod != null">
+        forbid_period,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="addUserId != null">
+        add_user_id,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="effectTime != null">
+        effect_time,
+      </if>
+      <if test="expireTime != null">
+        expire_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ruleId != null">
+        #{ruleId,jdbcType=INTEGER},
+      </if>
+      <if test="riskType != null">
+        #{riskType,jdbcType=SMALLINT},
+      </if>
+      <if test="policyType != null">
+        #{policyType,jdbcType=SMALLINT},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=SMALLINT},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="startIp != null">
+        #{startIp,jdbcType=VARCHAR},
+      </if>
+      <if test="endIp != null">
+        #{endIp,jdbcType=VARCHAR},
+      </if>
+      <if test="requestPeriod != null">
+        #{requestPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="requestLimit != null">
+        #{requestLimit,jdbcType=INTEGER},
+      </if>
+      <if test="forbidPeriod != null">
+        #{forbidPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="addUserId != null">
+        #{addUserId,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectTime != null">
+        #{effectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null">
+        #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atongmu.model.RiskControlRule">
+    update tb_risk_rule
+    <set>
+      <if test="riskType != null">
+        risk_type = #{riskType,jdbcType=SMALLINT},
+      </if>
+      <if test="policyType != null">
+        policy_type = #{policyType,jdbcType=SMALLINT},
+      </if>
+      <if test="priority != null">
+        priority = #{priority,jdbcType=SMALLINT},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="startIp != null">
+        start_ip = #{startIp,jdbcType=VARCHAR},
+      </if>
+      <if test="endIp != null">
+        end_ip = #{endIp,jdbcType=VARCHAR},
+      </if>
+      <if test="requestPeriod != null">
+        request_period = #{requestPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="requestLimit != null">
+        request_limit = #{requestLimit,jdbcType=INTEGER},
+      </if>
+      <if test="forbidPeriod != null">
+        forbid_period = #{forbidPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="addUserId != null">
+        add_user_id = #{addUserId,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        update_user_id = #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectTime != null">
+        effect_time = #{effectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null">
+        expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where rule_id = #{ruleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atongmu.model.RiskControlRule">
+    update tb_risk_rule
+    set risk_type = #{riskType,jdbcType=SMALLINT},
+      policy_type = #{policyType,jdbcType=SMALLINT},
+      priority = #{priority,jdbcType=SMALLINT},
+      app_id = #{appId,jdbcType=INTEGER},
+      area_id = #{areaId,jdbcType=INTEGER},
+      start_ip = #{startIp,jdbcType=VARCHAR},
+      end_ip = #{endIp,jdbcType=VARCHAR},
+      request_period = #{requestPeriod,jdbcType=INTEGER},
+      request_limit = #{requestLimit,jdbcType=INTEGER},
+      forbid_period = #{forbidPeriod,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      comment = #{comment,jdbcType=VARCHAR},
+      add_user_id = #{addUserId,jdbcType=BIGINT},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      effect_time = #{effectTime,jdbcType=TIMESTAMP},
+      expire_time = #{expireTime,jdbcType=TIMESTAMP}
+    where rule_id = #{ruleId,jdbcType=INTEGER}
+  </update>
+</mapper>
