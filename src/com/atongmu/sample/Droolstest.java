@@ -17,7 +17,7 @@ import java.math.BigDecimal;
  * @author maofagui
  * @version 1.0
  */
-public class Droolstest {
+public class DroolsTest {
     public static final void main(String[] args) {
         try {
 
@@ -72,8 +72,8 @@ public class Droolstest {
 
         KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
 
-        kbuilder.add(ResourceFactory.newClassPathResource("Pune.drl"), ResourceType.DRL);
-        kbuilder.add(ResourceFactory.newClassPathResource("Nagpur.drl"), ResourceType.DRL);
+        kbuilder.add(ResourceFactory.newClassPathResource("droolsexample/Pune.drl"), ResourceType.DRL);
+        kbuilder.add(ResourceFactory.newClassPathResource("droolsexample/Nagpur.drl"), ResourceType.DRL);
 
         KnowledgeBuilderErrors errors = kbuilder.getErrors();
 
